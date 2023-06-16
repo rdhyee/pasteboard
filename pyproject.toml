@@ -29,10 +29,10 @@ keywords = ["macOS", "clipboard", "pasteboard"]
 python = ">=3.6,<4.0"
 
 [tool.poetry.dev-dependencies]
-black = "^20.8b1"
-pytest = "^6.2.0"
-hypothesis = "^6.0.0"
-mypy = "^0.800"
+black = "~20.8b1"
+pytest = "~6.2.0"
+hypothesis = "~6.0.0"
+mypy = "*"
 # This version is the last to support Python 3.6...
 ipython = "7.16.1"
 # ...and jedi is not properly pinned
