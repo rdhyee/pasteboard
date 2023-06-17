@@ -1,0 +1,24 @@
+name: Debug Build
+
+on: [push]
+
+jobs:
+  build:
+    name: Debug Build
+    runs-on: macos-13
+
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'  # Install Python version 3.x
+
+    - name: Print Environment Variables
+      run: |
+        echo "CC: $CC"
+        echo "CXX: $CXX"
+        echo "LDSHARED: $LDSHARED"
+        echo "CPPFLAGS: $CPPFLAGS"
+        echo "CFLAGS: $CFLAGS"
+        echo "CXXFLAGS: $CXXFLAGS"
+        echo "LDFLAGS: $LDFLAGS"
