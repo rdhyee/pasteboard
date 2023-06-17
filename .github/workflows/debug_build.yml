@@ -4,17 +4,28 @@ on: [push]
 
 jobs:
   build:
-    name: Debug Build
+
     runs-on: macos-13
 
     steps:
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v2
       with:
         python-version: '3.11'  # Install Python version 3.x
 
-    - name: Print Environment Variables
+    - name: Install Xcode Command Line Tools
       run: |
+        xcode-select --install
+
+    - name: Set and Print Environment Variables
+      run: |
+        echo "CC=$(xcrun -find clang)"
+        echo "CXX=$(xcrun -find clang++)"
+        echo "LDSHARED=$(xcrun -find clang++)"
+        echo "CPPFLAGS='-I/usr/local/include'"
+        echo "CFLAGS='-I/usr/local/include'"
+        echo "CXXFLAGS='-I/usr/local/include'"
+        echo "LDFLAGS='-L/usr/local/lib'"
         echo "CC: $CC"
         echo "CXX: $CXX"
         echo "LDSHARED: $LDSHARED"
