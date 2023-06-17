@@ -14,7 +14,7 @@ setup(
                 "-Wextra",
                 "-Wpedantic",
                 "-Werror",
-                "-mmacosx-version-min=10.13",
+                "-mmacosx-version-min=13.0",
             ],
             extra_link_args=["-framework", "AppKit"],
             language="objc",
