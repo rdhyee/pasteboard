@@ -25,3 +25,4 @@ jobs:
         echo "CXX=$(xcrun -find clang++)" >> $GITHUB_ENV
         echo "LDSHARED=$(xcrun -find clang++)" >> $GITHUB_ENV
         echo "CPPFLAGS='-I/usr/local/include'" >> $GITHUB_ENV
+        cat $GITHUB_ENV
