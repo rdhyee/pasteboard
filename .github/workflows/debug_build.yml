@@ -9,27 +9,19 @@ jobs:
 
     steps:
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.11'  # Install Python version 3.x
 
-    - name: Install Xcode Command Line Tools
+    - name: Check Xcode Command Line Tools
       run: |
-        xcode-select --install
+        if ! [ -x "$(command -v clang)" ]; then
+          xcode-select --install
+        fi
 
     - name: Set and Print Environment Variables
       run: |
-        echo "CC=$(xcrun -find clang)"
-        echo "CXX=$(xcrun -find clang++)"
-        echo "LDSHARED=$(xcrun -find clang++)"
-        echo "CPPFLAGS='-I/usr/local/include'"
-        echo "CFLAGS='-I/usr/local/include'"
-        echo "CXXFLAGS='-I/usr/local/include'"
-        echo "LDFLAGS='-L/usr/local/lib'"
-        echo "CC: $CC"
-        echo "CXX: $CXX"
-        echo "LDSHARED: $LDSHARED"
-        echo "CPPFLAGS: $CPPFLAGS"
-        echo "CFLAGS: $CFLAGS"
-        echo "CXXFLAGS: $CXXFLAGS"
-        echo "LDFLAGS: $LDFLAGS"
+        echo "CC=$(xcrun -find clang)" >> $GITHUB_ENV
+        echo "CXX=$(xcrun -find clang++)" >> $GITHUB_ENV
+        echo "LDSHARED=$(xcrun -find clang++)" >> $GITHUB_ENV
+        echo "CPPFLAGS='-I/usr/local/include'" >> $GITHUB_ENV
