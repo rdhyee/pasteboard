@@ -16,7 +16,7 @@ setup(
                 "-Werror",
                 "-mmacosx-version-min=13.0",
             ],
-            extra_link_args=["-framework", "AppKit"],
+            extra_link_args=["-framework", "AppKit", "-mmacosx-version-min=13.0"],
             language="objc",
         )
     ],
